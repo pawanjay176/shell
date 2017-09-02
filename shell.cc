@@ -65,5 +65,6 @@ void shell()
 int main(int argc, char **argv)
 {
     shell();
+    cout << "asdsa"<<endl;
 
 }
