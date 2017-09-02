@@ -9,29 +9,52 @@
 using namespace std;
 
 const int MAX_ARGS = 10;
+const int BUFFER_SIZE = 256;
+
+// char **tokenize(char *line)
+// {
+// 	char *args[MAX_ARGS];
+
+//     char *token = strtok(line," ");
+//     int ind=0;
+//     while(token)
+//     {
+//         args[ind++] = token;
+//         token = strtok(0," ");
+//     }
+//     args[ind++]='\0';
+// }
+
+char *read_line()
+{
+	char *linebuffer = new char[BUFFER_SIZE];
+    cin.getline(linebuffer, sizeof(linebuffer));
+    if(cin.eof())
+        exit(0);
+    if(!strcmp(linebuffer,"exit"))
+        exit(0);
+    return linebuffer;
+}
+
 
 void shell()
 {
+	char *line, **args;
     cout << "Hey, I'm REBASH (rebourne shell!)" << endl;
     while(1)
     {
         cout << "$ ";
-        char linebuffer[256];
-        cin.getline(linebuffer, sizeof(linebuffer));
-        if(cin.eof())
-            break;
-        if(!strcmp(linebuffer,"exit"))
-            break;
+        line = read_line();
         char *args[MAX_ARGS];
 
-        char *token = strtok(linebuffer," ");
-        int ind=0;
-        while(token)
-        {
-            args[ind++] = token;
-            token = strtok(0," ");
-        }
-        args[ind++]='\0';
+	    char *token = strtok(line," ");
+	    int ind=0;
+	    while(token)
+	    {
+	        args[ind++] = token;
+	        token = strtok(0," ");
+	    }
+	    args[ind++]='\0';
         int status, estatus;
         if(!strcmp(args[0],"cd"))
         {
