@@ -27,7 +27,8 @@ const int BUFFER_SIZE = 256;
 
 char *read_line()
 {
-	char *linebuffer = new char[BUFFER_SIZE];
+	// char *linebuffer = new char[BUFFER_SIZE];
+    char linebuffer[BUFFER_SIZE];
     cin.getline(linebuffer, sizeof(linebuffer));
     if(cin.eof())
         exit(0);
