@@ -33,6 +33,7 @@ char *read_line()
         exit(0);
     if(!strcmp(linebuffer,"exit"))
         exit(0);
+    cout << linebuffer << endl;
     return linebuffer;
 }
 
@@ -45,6 +46,7 @@ void shell()
     {
         cout << "$ ";
         line = read_line();
+        cout << line << endl;
         char *args[MAX_ARGS];
 
 	    char *token = strtok(line," ");
